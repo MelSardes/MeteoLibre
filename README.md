@@ -8,5 +8,5 @@ Weather App UI from dribbble using Jetpack Compose
 
 #### Result
 <p align="center">
-  <img src="screenshots/result.jpg" width="933" height="909" />
+  <img src="screenshots/result.png" width="933" height="909" />
 </p>
