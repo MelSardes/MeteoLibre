@@ -25,7 +25,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
@@ -43,7 +42,6 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHost
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -138,8 +136,8 @@ private fun Bottom(onClick: () -> Unit) {
                 "21°",
                 R.drawable.three_yellow_lightning_bolts,
                 "23:00",
+                Modifier.weight(0.7f),
                 true,
-                modifier = Modifier.weight(0.7f),
             )
 
             TimePrediction(
@@ -164,8 +162,8 @@ private fun TimePrediction(
     temperature: String,
     weatherPicture: Int,
     time: String,
-    isNow: Boolean = false,
     modifier: Modifier = Modifier,
+    isNow: Boolean = false,
 ) {
     Column(
         when (isNow) {
@@ -318,8 +316,8 @@ private fun Stats() {
             value = "24%",
             type = "Humidité",
             image = R.drawable.water_drop_icon,
+            modifier = Modifier.weight(1f),
             tintColor = Color(0xFF2196F3),
-            modifier = Modifier.weight(1f)
         )
 
         StatItem(
@@ -336,8 +334,8 @@ private fun StatItem(
     value: String,
     type: String,
     image: Int,
+    modifier: Modifier = Modifier,
     tintColor: Color = Color.White,
-    modifier: Modifier = Modifier
 ) {
     Column(
         verticalArrangement = Arrangement.spacedBy(5.dp),
@@ -392,7 +390,7 @@ private fun Update() {
 }
 
 @Composable
-private fun Top(leadingIcon: Int, textIcon: Int, traillingIcon: Int, text: String) {
+private fun Top(leadingIcon: Int, textIcon: Int, trailingIcon: Int, text: String) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween,
@@ -428,7 +426,7 @@ private fun Top(leadingIcon: Int, textIcon: Int, traillingIcon: Int, text: Strin
         }
 
         Icon(
-            painter = painterResource(id = traillingIcon),
+            painter = painterResource(id = trailingIcon),
             contentDescription = null,
             tint = Color.White
         )
@@ -437,7 +435,7 @@ private fun Top(leadingIcon: Int, textIcon: Int, traillingIcon: Int, text: Strin
 
 @Preview(
     showBackground = true,
-    device = "spec:width=411dp,height=891dp", showSystemUi = true, name = "411x891"
+    device = "spec:width=411dp,height=891dp"
 )
 /*@Preview(
     showBackground = true,
@@ -467,7 +465,7 @@ fun GreetingPreview() {
 }
 
 
-@Preview(device = "spec:width=411dp,height=891dp", showSystemUi = true, showBackground = true)
+@Preview(device = "spec:width=411dp,height=891dp", showBackground = true)
 @Composable
 fun WeekMeteo() {
     Box(
@@ -555,7 +553,7 @@ private fun DayRow(
     minTemperature: String
 ) {
     Row(
-        verticalAlignment = CenterVertically,
+        verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween,
     ) {
         Text(
@@ -573,7 +571,7 @@ private fun DayRow(
             modifier = Modifier
                 .weight(2f)
                 .height(40.dp),
-            verticalAlignment = CenterVertically,
+            verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(5.dp),
 
             ) {
@@ -642,7 +640,7 @@ private fun TopCard7Days() {
         Top(
             leadingIcon = R.drawable.arrow_back_icon,
             textIcon = R.drawable.date_icon,
-            traillingIcon = R.drawable.more_icon,
+            trailingIcon = R.drawable.more_icon,
             text = "7 jours"
         )
 
@@ -673,7 +671,7 @@ private fun TopCard7Days() {
                     ),
                 )
 
-                Row(verticalAlignment = CenterVertically) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(
                         buildAnnotatedString {
                             withStyle(style = ParagraphStyle(textAlign = TextAlign.Start)) {
